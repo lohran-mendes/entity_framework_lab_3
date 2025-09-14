@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace entity_framework_lab_3;
 
 public class Program
@@ -8,6 +10,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        
+        builder.Services.AddDbContext<DAL.Contexto>(options =>
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         var app = builder.Build();
 
